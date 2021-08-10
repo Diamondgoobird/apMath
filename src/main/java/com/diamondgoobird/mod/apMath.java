@@ -1,6 +1,7 @@
 package com.diamondgoobird.mod;
 
 import java.io.File;
+import java.util.regex.Pattern;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -44,7 +45,7 @@ public class apMath {
 		System.out.println(modPrefix + "Initiallizing Commands...");
 		ClientCommandHandler.instance.registerCommand(new apMathCommand());
 		System.out.println(modPrefix + "Completed Initiallizing Commands");
-		MinecraftForge.EVENT_BUS.register(new chatListener());
+		MinecraftForge.EVENT_BUS.register(new apDetector());
 	}
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent postEvent) {
