@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "",
+  "modid": "apmath",
+  "name": "APMath",
+  "description": "Tells you how much you have left on a tiered achievement on hypixel. (/apm help for options)",
+  "version": "1.0.0",
+  "mcversion": "1.8.9",
+  "url": "https://www.youtube.com/channel/UCsAfslV1GeHUfvi4r2i-N9g",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["Diamondgoobird"],
+  "credits": "kirkcatcat, suggested mod idea.",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

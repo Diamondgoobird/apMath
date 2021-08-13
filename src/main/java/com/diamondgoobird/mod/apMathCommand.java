@@ -42,6 +42,7 @@ public class apMathCommand extends CommandBase {
 		else if (args[0].equalsIgnoreCase("enable")) {
 			try {
 				DGBGlobal.set(apMath.Config.getConfigFile(),"toggle","true","    B:toggle=","boolean");
+				apMath.loadConfig();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -52,6 +53,7 @@ public class apMathCommand extends CommandBase {
 		else if (args[0].equalsIgnoreCase("disable")) {
 			try {
 				DGBGlobal.set(apMath.Config.getConfigFile(),"toggle","false","    B:toggle=","boolean");
+				apMath.loadConfig();
 				//DGBGlobal.set(Main.Config.getConfigFile(),"both","false","    B:both=","boolean");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -64,11 +66,13 @@ public class apMathCommand extends CommandBase {
 			try {
 				if (apMath.both == true) {
 					DGBGlobal.set(apMath.Config.getConfigFile(),"both","false","    B:both=","boolean");
+					apMath.loadConfig();
 					apMath.both = false;
 					sender.addChatMessage(new ChatComponentText(EnumChatFormatting.AQUA + "Successfully" + EnumChatFormatting.GOLD + " Disabled " + EnumChatFormatting.AQUA + "making it print both modes."));
 				}
 				else {
 					DGBGlobal.set(apMath.Config.getConfigFile(),"both","true","    B:both=","boolean");
+					apMath.loadConfig();
 					apMath.both = true;
 					sender.addChatMessage(new ChatComponentText(EnumChatFormatting.AQUA + "Successfully" + EnumChatFormatting.GOLD + " Enabled " + EnumChatFormatting.AQUA + "making it print both modes."));
 				}
@@ -79,10 +83,11 @@ public class apMathCommand extends CommandBase {
 		}
 		
 		else if (args[0].equalsIgnoreCase("help")) {
+			apMath.loadConfig();
 			EnumChatFormatting a = EnumChatFormatting.AQUA;
 			EnumChatFormatting da = EnumChatFormatting.DARK_AQUA;
         	sender.addChatMessage(new ChatComponentText(a + "/apm " + a + "enable" + da + "/" + a + "disable " + da + "- " + a + "Disables/Enables automatically calculating how many are left."));
-        	sender.addChatMessage(new ChatComponentText(a + "/apm " + a + "both" + da + "- " + a + "Toggles whether it tells you how many left and the regular output."));
+        	sender.addChatMessage(new ChatComponentText(a + "/apm " + a + "both " + da + "- " + a + "Toggles whether it tells you how many left and the regular output."));
         	sender.addChatMessage(new ChatComponentText(a + "/apm " + a + "help " + da + "- " + a + "Displays this message."));
 		}
 		
@@ -93,5 +98,13 @@ public class apMathCommand extends CommandBase {
     {
     	return args.length == 1 ? getListOfStringsMatchingLastWord(args, new String[] {"help","enable", "disable", "both"}): null;
     }
+	@Override
+	public List<String> getCommandAliases() {
+		List<String> a = new ArrayList();
+		a.add("apmath");
+		a.add("achievementpointmath");
+		return a;
+		
+	}
 
 }
