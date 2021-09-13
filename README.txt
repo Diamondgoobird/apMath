@@ -3,6 +3,7 @@ APMath is a mod that does the math whenever you advance towards a tiered achieve
 /apm disable disables the mod entirely
 /apm enable enables just saying how many is left
 /apm both toggles whether both are displayed or not (you need both to be enabled for it to show)
+/apm debug prints what the config reads; mainly used to search for config issues
 /apm help gives help
 
 Idea by: kirkcatcat the whale
