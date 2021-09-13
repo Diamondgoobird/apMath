@@ -15,10 +15,9 @@ public class apDetector {
 	@SubscribeEvent
 	public void getNumbers(ClientChatReceivedEvent event) {
 		if (event.message.getUnformattedText().contains("a>>") && event.message.getUnformattedText().contains("Progress")) {	
-		apMath.Config.load();
-		apMath.toggle = apMath.Config.getBoolean("toggle", "values", true, "Toggles whether the mod is enabled");
-		if (apMath.toggle == false) {
-			
+		apMathVariables.checkConfig(null);
+		if (apMathVariables.checkVariable("Toggle").equalsIgnoreCase("Disabled")) {
+			apMathVariables.printConsole("Didn't do AP Math due to mod being disabled... ('/apm enable' to enable)");
 		}
 		else {
 		String num1;
@@ -50,7 +49,7 @@ public class apDetector {
 				String replacing = "\u00A7r\u00A7a" + number1 + "\u00A7r\u00A77/\u00A7r\u00A7a" + number2 + "\u00A7r";
 				System.out.println("Replacing: " + replacing);
 				String replacement;
-				if (apMath.both == false) {
+				if (apMathVariables.checkVariable("Both").equalsIgnoreCase("no")) {
 					int difference = number2 - number1;
 					event.message = new ChatComponentText(event.message.getFormattedText().replace(replacing, "\u00A7" + "a" + difference + " left."));
 					Minecraft.getMinecraft().thePlayer.addChatComponentMessage(event.message);

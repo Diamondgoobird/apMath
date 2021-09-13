@@ -21,18 +21,15 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.*;
 
-@Mod(modid = DGBGlobal.MOD_ID, name = DGBGlobal.MOD_NAME, version = DGBGlobal.VERSION)
+@Mod(modid = apMathVariables.MOD_ID, name = apMathVariables.MOD_NAME, version = apMathVariables.VERSION)
 public class apMath {
-	public final static Configuration Config = new Configuration(new File("config/ApMath.cfg"));
-	public static boolean toggle;
-	public static boolean both;
 	public final static String modPrefix = "\u00A7b[APMATH]: \u00A7r";	
-	@Instance(DGBGlobal.MOD_ID)
+	@Instance(apMathVariables.MOD_ID)
 	public static apMath instance;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent preEvent) {
-		loadConfig();
+		apMathVariables.checkConfig(null);
 	}
 	@EventHandler
 	public void Init(FMLInitializationEvent Event) {
@@ -43,13 +40,6 @@ public class apMath {
 	}
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent postEvent) {
-	}
-	public static void loadConfig() {
-		System.out.println(modPrefix + "Initiallizing Mod...");	
-		Config.load();
-		toggle = Config.getBoolean("toggle", "values", true, "Toggles whether the mod is enabled");
-		both = Config.getBoolean("both", "values", true, "If true, then it tells you the regular message and how much you have left.");
-		Config.save();
 	}
 }
 
